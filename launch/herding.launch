@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	<!-- launch the mocap, make sure to edit the mocap config to have the bebops -->
+<!--
+	<include file="$(find mocap_optitrack)/launch/mocap.launch"/>
+-->
+
+	<!-- launch the joy node and arbiter node, joy node is launched from the arbiter -->
+<!--
+	<include file="$(find arbiter)/launch/arbiter.launch"/>
+-->
+
+<!-- <node pkg="odom_estimator" type="odom_node" name="odom_node" output="screen">
+  <rosparam param="names"> ["bebop4","sheep1"] </rosparam>
+</node> -->
+
+
+	<!-- start the herding node -->
+  <node pkg="single_agent_herding_adp" type="herding_adp" name="herding_adp" output="screen">
+
+    <param name="bearName" value="bebop4"/>
+    <rosparam param="sheepName"> ["sheep1"]</rosparam>
+    <param name="kd" value="1.15"/>
+    <param name="betath" value="0.1"/>
+    <param name="kth" value="0.25"/>
+    <param name="Gammath" value="0.1"/>
+    <param name="betac" value="0.001"/>
+    <param name="gamma1" value="0.5"/>
+    <param name="Gammac" value="0.01"/>
+    <param name="N" value="10"/>
+    <param name="Wa" value="0.1"/>
+    <param name="Wc" value="0.2"/>
+    <param name="kc1" value="0.1"/>
+    <param name="kc2" value="0.9"/>
+    <param name="ka1" value="0.9"/>
+    <param name="ka2" value="0.1"/>
+    <param name="knu" value="0.05"/>
+    <param name="Ka" value="1.0"/>
+    <param name="keta1" value="0.0"/>
+    <param name="keta2" value="1.0"/>
+    <param name="Ka" value="1.0"/>
+    <rosparam param="Qx"> [150.0,3000.0, 150.0,3000.0, 100.0, 100.0]</rosparam>
+    <rosparam param="R"> [60.0,40.0, 150.0,125.0]</rosparam>
+    <param name="PMag" value="0.0"/>
+    <param name="PVar" value="0.5"/>
+    <!-- eta terms less than d terms has weird behavior, not good though -->
+    <param name="height" value="0.75"/>
+    <param name="originRadius" value="0.5"/>
+    <rosparam param="zg"> [-2.0,0.0]</rosparam>
+    <param name="saveData" value="true"/>
+    <param name="lambda1" value="0.75"/>
+    <param name="Deltath" value="2.0"/>
+    <param name="M" value="50"/>
+    <param name="basisCenters" value="0.75"/>
+    <param name="basisVar" value="0.5"/>
+    <param name="th" value="0.05"/>
+    <param name="thMax" value="2.0"/>
+    <rosparam param="wall"> [-4.0,5.0, -1.75,1.75]</rosparam>
+
+    <param name="kpl" value="0.9"/>
+    <param name="kdl" value="0.04"/>
+    <param name="gammal" value="0.005"/>
+
+  </node>
+
+</launch>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <node pkg="single_agent_herding_adp" type="ar_projector_herding_adp" name="ar_projector_herding_adp" output="screen">
+    <param name="pan" value="-0.5"/>
+    <param name="tilt" value="0.75"/>
+  </node>
+
+</launch>
